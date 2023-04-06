@@ -6,8 +6,4 @@ const token = "TWÓJ TOKEN"
 
 const studentAPIReciverService: StudentAPIReciverService = new StudentAPIReciverService(token);
 
-async function GetS() {
-    console.log(await studentAPIReciverService.GetStudnet());
-}
-
-GetS();
+console.log(await studentAPIReciverService.GetStudnet());
