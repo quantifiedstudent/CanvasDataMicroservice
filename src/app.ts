@@ -4,6 +4,6 @@ import StudentAPIReciverService from "./infrastructure/recivers/StudentAPIRecive
 
 const token = "TWÓJ TOKEN"
 
-const studentAPIReciverService: StudentAPIReciverService = new StudentAPIReciverService(token); 
+const studentAPIReciverService: StudentAPIReciverService = new StudentAPIReciverService(token);
 
-console.log(await studentAPIReciverService.GetStudnet())
+console.log(studentAPIReciverService.GetStudnet())
