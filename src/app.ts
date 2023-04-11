@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import StudentAPIReciverService from "./infrastructure/recivers/StudentAPIReciverService";
 import CourseAPIReciverService from "./infrastructure/recivers/CourseAPIReciver";
 import CourseDTO from "./infrastructure/dto/CourseDTO";
+import ManualFetch from "./manualFetching";
 
 
 console.log("Hello world");
@@ -21,9 +22,13 @@ function GetPrivateToken(): string {
 const token = GetPrivateToken();
 
 const studentAPIReciverService: StudentAPIReciverService = new StudentAPIReciverService(token);
-const courseAPIReciverService: CourseAPIReciverService = new CourseAPIReciverService(token);
+// const courseAPIReciverService: CourseAPIReciverService = new CourseAPIReciverService(token);
 
-const s: CourseDTO  = await courseAPIReciverService.GetStudnetCourses();
+// const s: CourseDTO  = await courseAPIReciverService.GetStudnetCourses();
 
 console.log(await studentAPIReciverService.GetStudnet());
-console.log(s);
+// console.log(s);
+
+const manual: ManualFetch = new ManualFetch(token);
+
+manual.GetAssignmet();
