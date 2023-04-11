@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 import StudentAPIReciverService from "./infrastructure/recivers/StudentAPIReciverService";
 import CourseAPIReciverService from "./infrastructure/recivers/CourseAPIReciver";
+import CourseDTO from "./infrastructure/dto/CourseDTO";
+
 
 console.log("Hello world");
 
@@ -21,5 +23,7 @@ const token = GetPrivateToken();
 const studentAPIReciverService: StudentAPIReciverService = new StudentAPIReciverService(token);
 const courseAPIReciverService: CourseAPIReciverService = new CourseAPIReciverService(token);
 
+const s: CourseDTO  = await courseAPIReciverService.GetStudnetCourses();
+
 console.log(await studentAPIReciverService.GetStudnet());
-console.log(await courseAPIReciverService.GetStudnetCourses());
+console.log(s);

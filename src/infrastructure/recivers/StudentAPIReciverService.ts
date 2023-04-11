@@ -22,8 +22,8 @@ export default class StudentAPIReciverService extends BaseCanvasAPIReciverServic
     };
 
     try {
-      const specifics = "self?=";
-      const response = await fetch(this.url + this.apiRoute + specifics, options);
+      const parameter = "self?=";
+      const response = await fetch(this.url + this.apiRoute + parameter, options);
       const data = await response.json();
       return <StudentDTO>data;
     } catch (error) {
