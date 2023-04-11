@@ -3,7 +3,7 @@ import BaseCanvasAPIReciverService from "../recivers/BaseCanvasReciverService";
 import StudentDTO from "../dto/StudentDTO";
 
 export default class StudentAPIReciverService extends BaseCanvasAPIReciverService {
-  apiRoute = "/api/v1/users/self?=";
+  apiRoute = "/api/v1/users/";
 
   constructor(token: string) {
     super(token);
@@ -22,7 +22,8 @@ export default class StudentAPIReciverService extends BaseCanvasAPIReciverServic
     };
 
     try {
-      const response = await fetch(this.url + this.apiRoute, options);
+      const specifics = "self?=";
+      const response = await fetch(this.url + this.apiRoute + specifics, options);
       const data = await response.json();
       return <StudentDTO>data;
     } catch (error) {
