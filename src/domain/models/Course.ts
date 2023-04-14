@@ -1,36 +1,40 @@
-export class Course {
-  public id: number;
-  // public current_grade: string;
-  // public current_score: number;
-  // public final_grade: string;
-  // public final_score: number;
-  // public unposted_current_score: number;
-  // public unposted_current_grade: string;
-  // public unposted_final_score: number;
-  // public unposted_final_grade: string;
+import CourseDTO from "../../infrastructure/dto/CourseDTO";
+import Assignment from "./Assignment";
 
-  constructor(id: number) {
-    this.id = id;
+export default class Course {
+  id: number;
+  name: string;
+  account_id: number;
+  uuid: string;
+  start_at: Date;
+  grading_standard_id: number;
+  is_public: boolean;
+  created_at: Date;
+  course_code: string;
+  grade_passback_setting: null;
+  end_at: null;
+  course_color: null;
+  friendly_name: null;
+  apply_assignment_group_weights: boolean;
+  hide_final_grades: boolean;
+  assignments: Assignment[];
+
+  constructor(dto: CourseDTO, assignments: Assignment[]) {
+    this.id = dto.id;
+    this.name = dto.name;
+    this.account_id = dto.account_id;
+    this.uuid = dto.uuid;
+    this.start_at = new Date(dto.start_at);
+    this.grading_standard_id = dto.grading_standard_id;
+    this.is_public = dto.is_public;
+    this.created_at = new Date(dto.created_at);
+    this.course_code = dto.course_code;
+    this.grade_passback_setting = dto.grade_passback_setting;
+    this.end_at = dto.end_at;
+    this.course_color = dto.course_color;
+    this.friendly_name = dto.friendly_name;
+    this.apply_assignment_group_weights = dto.apply_assignment_group_weights;
+    this.hide_final_grades = dto.hide_final_grades;
+    this.assignments = assignments;
   }
-
-  // constructor(
-  //     current_grade: string,
-  //     current_score: number,
-  //     final_grade: string,
-  //     final_score: number,
-  //     unposted_current_score: number,
-  //     unposted_current_grade: string,
-  //     unposted_final_score: number,
-  //     unposted_final_grade: string
-  // ) {
-  //     this.current_grade = current_grade;
-  //     this.current_score = current_score,
-  //         this.final_grade = final_grade,
-  //         this.final_score = final_score,
-  //         this.unposted_current_score = unposted_current_score,
-  //         this.unposted_current_grade = unposted_current_grade,
-  //         this.unposted_final_score = unposted_final_score,
-  //         this.unposted_final_grade = unposted_final_grade
-
-  // }
 }

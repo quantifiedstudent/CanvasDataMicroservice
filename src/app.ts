@@ -5,6 +5,7 @@ import SubmissionsAPIReciverService from "./infrastructure/recivers/SubmissionsA
 import CourseAPIReciverService from "./infrastructure/recivers/CourseAPIReciver";
 import CourseDTO from "./infrastructure/dto/CourseDTO";
 import ManualFetch from "./manualFetching";
+import Course from './domain/models/Course';
 
 
 console.log("Hello world");
@@ -37,12 +38,7 @@ console.log(studentCanvasId)
 
 const courses = await courseAPIReciverService.GetStudnetCourses(studentCanvasId)
 console.log(courses)
-
-for (let course in courses){
-    await assignmentsAPIReciverService.GetStudnetAssignments(course.id)
-}
     
-
 // console.log(await assignmentsAPIReciverService.GetStudnetAssignments(12525));
 
 // console.log(await submissionsAPIReciverService.GetStudnetSubmissions(12525, 1, ));
