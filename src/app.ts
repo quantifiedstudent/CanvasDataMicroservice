@@ -24,13 +24,13 @@ const token = GetPrivateToken();
 
 const studentAPIReciverService: StudentAPIReciverService = new StudentAPIReciverService(token);
 // const courseAPIReciverService: CourseAPIReciverService = new CourseAPIReciverService(token);
-const assignmentsAPIReciverService : AssignmentsAPIReciverService = new AssignmentsAPIReciverService(token)
+const assignmentsAPIReciverService: AssignmentsAPIReciverService = new AssignmentsAPIReciverService(token)
 
 // const s: CourseDTO  = await courseAPIReciverService.GetStudnetCourses();
 
 console.log(await studentAPIReciverService.GetStudnet());
 // console.log(s);
-console.log(await assignmentsAPIReciverService.GetStudnetAssignments());
+console.log(await assignmentsAPIReciverService.GetStudnetAssignments(12525));
 
 
 const manual: ManualFetch = new ManualFetch(token);
