@@ -3,13 +3,14 @@ import BaseCanvasAPIReciverService from "../recivers/BaseCanvasReciverService";
 import CourseDTO from "../dto/CourseDTO";
 
 export default class CourseAPIReciverService extends BaseCanvasAPIReciverService {
-    apiRoute = "/api/v1/courses";
+    apiRoute = (studentCanvasId: number) => `/api/v1/users/${studentCanvasId.toString()}/courses`;
+
 
     constructor(token: string) {
         super(token);
     }
 
-    async GetStudnetCourses(): Promise<CourseDTO> {
+    async GetStudnetCourses(studentCanvasId: number): Promise<CourseDTO> {
         const header = {
           headers: {
             Authorization: `Bearer ${this.token}`,
@@ -22,7 +23,7 @@ export default class CourseAPIReciverService extends BaseCanvasAPIReciverService
         };
     
         try {
-          const response = await fetch(this.url + this.apiRoute, options);
+          const response = await fetch(this.url + this.apiRoute(studentCanvasId), options);
           const data = await response.json();
           return <CourseDTO>data;
         } catch (error) {

@@ -1,17 +1,20 @@
 import fetch from "node-fetch";
-import BaseCanvasAPIReciverService from "../recivers/BaseCanvasReciverService";
+import BaseCanvasAPIReciverService from "./BaseCanvasReciverService";
 
-export default class SubmissionAPIReciverService extends BaseCanvasAPIReciverService {
+export default class SubmissionsAPIReciverService extends BaseCanvasAPIReciverService {
 
     //We dont have premission for seeing submissions
 
-    apiRoute = (idCourse: number, idAssignment: number) => `/api/v1/courses/${idCourse.toString()}/assignments/${idAssignment.toString()}/submissions`;
+    // we have michael, if we use user_id
+    // GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
+
+    apiRoute = (idCourse: number, idAssignment: number , studentCanvasId: number) => `/api/v1/courses/${idCourse.toString()}/assignments/${idAssignment.toString()}/submissions/${studentCanvasId.toString()}`;
 
     constructor(token: string) {
         super(token);
     }
 
-    async GetStudnetAssignments(idCourse: number, idAssignment: number) {
+    async GetStudnetSubmissions(idCourse: number, idAssignment: number, studentCanvasId: number) {
         const header = {
             headers: {
                 Authorization: `Bearer ${this.token}`,
@@ -24,7 +27,7 @@ export default class SubmissionAPIReciverService extends BaseCanvasAPIReciverSer
         };
 
         try {
-            const response = await fetch(this.url + this.apiRoute(idCourse, idAssignment), options);
+            const response = await fetch(this.url + this.apiRoute(idCourse, idAssignment, studentCanvasId), options);
             const data = await response.json();
             return data;
         } catch (error) {
