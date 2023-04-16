@@ -17,9 +17,9 @@ export default class Course {
   friendly_name: null;
   apply_assignment_group_weights: boolean;
   hide_final_grades: boolean;
-  assignments: Assignment[];
+  assignments: Assignment[] = [];
 
-  constructor(dto: CourseDTO, assignments: Assignment[]) {
+  constructor(dto: CourseDTO) {
     this.id = dto.id;
     this.name = dto.name;
     this.account_id = dto.account_id;
@@ -35,6 +35,9 @@ export default class Course {
     this.friendly_name = dto.friendly_name;
     this.apply_assignment_group_weights = dto.apply_assignment_group_weights;
     this.hide_final_grades = dto.hide_final_grades;
+  }
+
+  AddAssignments(assignments: Assignment[]): void {
     this.assignments = assignments;
   }
 }

@@ -4,6 +4,7 @@ import SubmissionsAPIReciverService from "./infrastructure/recivers/SubmissionsA
 import CourseAPIReciverService from "./infrastructure/recivers/CourseAPIReciver";
 import ManualFetch from "./manualFetching";
 import { CommandStudentHandler } from "./application/commandHandlers/CommandStudentHandler";
+import { CommandCourseHandler } from "./application/commandHandlers/CommandCourseHandler";
 
 console.log("Hello world");
 
@@ -20,8 +21,9 @@ const token = GetPrivateToken();
 
 const commandStudentHandler: CommandStudentHandler = new CommandStudentHandler(token);
 
-const courseAPIReciverService: CourseAPIReciverService =
-  new CourseAPIReciverService(token);
+const commandCourseHandler: CommandCourseHandler = new CommandCourseHandler(token);
+
+
 const assignmentsAPIReciverService: AssignmentsAPIReciverService =
   new AssignmentsAPIReciverService(token);
 const submissionsAPIReciverService: SubmissionsAPIReciverService =
@@ -34,10 +36,8 @@ console.log(student);
 const studentCanvasId = await commandStudentHandler.GetStudentCanvasId();
 console.log(studentCanvasId);
 
-const courses = await courseAPIReciverService.GetStudnetCourses(
-  studentCanvasId
-);
-// console.log(courses);
+const courses = await commandCourseHandler.GetStudnetCourses(studentCanvasId);
+console.log(courses);
 
 // console.log(await assignmentsAPIReciverService.GetStudnetAssignments(12525));
 
