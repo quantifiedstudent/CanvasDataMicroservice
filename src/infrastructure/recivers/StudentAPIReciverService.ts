@@ -1,8 +1,9 @@
 import fetch from "node-fetch";
 import BaseCanvasAPIReciverService from "../recivers/BaseCanvasReciverService";
 import StudentDTO from "../dto/StudentDTO";
+import { IStudentAPIReciverService } from "../../domain/interfaces/IAPIReciverServices/IStudentAPIReciverService";
 
-export default class StudentAPIReciverService extends BaseCanvasAPIReciverService {
+export default class StudentAPIReciverService extends BaseCanvasAPIReciverService implements IStudentAPIReciverService{
   apiRoute = "/api/v1/users/";
 
   constructor(token: string) {

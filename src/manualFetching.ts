@@ -5,6 +5,7 @@ import StudentDTO from "./infrastructure/dto/StudentDTO";
 export default class ManualFetch extends BaseCanvasAPIReciverService {
     // GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
   url = "https://fhict.instructure.com/api/v1/courses/12886/assignments/216054/submissions/24412";
+  // url = "https://fhict.instructure.com/api/v1/users/self";
   constructor(token: string) {
     super(token);
   }
