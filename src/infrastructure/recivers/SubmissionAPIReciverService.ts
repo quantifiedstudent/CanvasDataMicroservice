@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import BaseCanvasAPIReciverService from "./BaseCanvasReciverService";
 
-export default class SubmissionsAPIReciverService extends BaseCanvasAPIReciverService {
+export default class SubmissionAPIReciverService extends BaseCanvasAPIReciverService {
 
     //We dont have premission for seeing submissions
 

@@ -1,10 +1,11 @@
 import * as fs from "fs";
-import AssignmentsAPIReciverService from "./infrastructure/recivers/AssignmentsAPIReciverService";
-import SubmissionsAPIReciverService from "./infrastructure/recivers/SubmissionsAPIReciverService";
+import AssignmentAPIReciverService from "./infrastructure/recivers/AssignmentAPIReciverService";
+import SubmissionAPIReciverService from "./infrastructure/recivers/SubmissionAPIReciverService";
 import CourseAPIReciverService from "./infrastructure/recivers/CourseAPIReciver";
 import ManualFetch from "./manualFetching";
 import { CommandStudentHandler } from "./application/commandHandlers/CommandStudentHandler";
 import { CommandCourseHandler } from "./application/commandHandlers/CommandCourseHandler";
+import { CommandAssignmentHandler } from "./application/commandHandlers/CommandAssignmentHandler";
 
 console.log("Hello world");
 
@@ -23,21 +24,29 @@ const commandStudentHandler: CommandStudentHandler = new CommandStudentHandler(t
 
 const commandCourseHandler: CommandCourseHandler = new CommandCourseHandler(token);
 
+const commandAssignmentHandler: CommandAssignmentHandler = new CommandAssignmentHandler(token);
 
-const assignmentsAPIReciverService: AssignmentsAPIReciverService =
-  new AssignmentsAPIReciverService(token);
-const submissionsAPIReciverService: SubmissionsAPIReciverService =
-  new SubmissionsAPIReciverService(token);
-
-// const s: CourseDTO  = await courseAPIReciverService.GetStudnetCourses();
 
 const student = await commandStudentHandler.GetStudnet();
-console.log(student);
+// console.log(student);
+
 const studentCanvasId = await commandStudentHandler.GetStudentCanvasId();
-console.log(studentCanvasId);
+// console.log(studentCanvasId);
 
 const courses = await commandCourseHandler.GetStudnetCourses(studentCanvasId);
-console.log(courses);
+// console.log(courses);
+
+const assignments = await commandAssignmentHandler.GetStudnetAssignments(studentCanvasId, 12886);
+console.log(assignments);
+
+
+
+
+
+const assignmentAPIReciverService: AssignmentAPIReciverService =
+  new AssignmentAPIReciverService(token);
+const submissionsAPIReciverService: SubmissionAPIReciverService =
+  new SubmissionAPIReciverService(token);
 
 // console.log(await assignmentsAPIReciverService.GetStudnetAssignments(12525));
 
