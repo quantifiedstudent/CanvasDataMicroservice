@@ -6,6 +6,7 @@ import ManualFetch from "./manualFetching";
 import { CommandStudentHandler } from "./application/commandHandlers/CommandStudentHandler";
 import { CommandCourseHandler } from "./application/commandHandlers/CommandCourseHandler";
 import { CommandAssignmentHandler } from "./application/commandHandlers/CommandAssignmentHandler";
+import * as subbmissionRouter from "./application/commandHandlers/CommandSubbmisionHandler"
 import express from "express";
 
 console.log("Hello world");
@@ -16,6 +17,8 @@ const PORT: number = 7000;
 
 // Middleware that parses body to JSON format
 app.use(express.json());
+
+
 
 app.get("/", (req, res) => {
   res.status(200).send("welcome to the website");

@@ -1,0 +1,30 @@
+export default interface SubmissionDTO {
+    id: number;
+    body: null;
+    url: null;
+    grade: string;
+    score: number;
+    submitted_at: null;
+    assignment_id: number;
+    user_id: number;
+    submission_type: null;
+    workflow_state: string;
+    grade_matches_current_submission: boolean;
+    graded_at: Date;
+    grader_id: number;
+    attempt: null;
+    cached_due_date: null;
+    excused: boolean;
+    late_policy_status: null;
+    points_deducted: null;
+    grading_period_id: null;
+    extra_attempts: null;
+    posted_at: Date;
+    redo_request: boolean;
+    late: boolean;
+    missing: boolean;
+    seconds_late: number;
+    entered_grade: string;
+    entered_score: number;
+    preview_url: string;
+}
