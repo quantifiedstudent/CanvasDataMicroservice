@@ -6,8 +6,9 @@ import ManualFetch from "./manualFetching";
 import { CommandStudentHandler } from "./application/commandHandlers/CommandStudentHandler";
 import { CommandCourseHandler } from "./application/commandHandlers/CommandCourseHandler";
 import { CommandAssignmentHandler } from "./application/commandHandlers/CommandAssignmentHandler";
-import * as subbmissionRouter from "./application/commandHandlers/CommandSubbmisionHandler"
 import express from "express";
+
+const submmisons = require('./application/commandHandlers/CommandSubbmisionHandler')
 
 console.log("Hello world");
 // EXPRESS CONFIG
@@ -18,6 +19,7 @@ const PORT: number = 7000;
 // Middleware that parses body to JSON format
 app.use(express.json());
 
+app.use('/GetSubbmision', submmisons);
 
 
 app.get("/", (req, res) => {
