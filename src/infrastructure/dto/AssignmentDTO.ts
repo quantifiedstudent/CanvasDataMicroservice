@@ -52,8 +52,8 @@ export default interface AssignmentDTO {
     html_url: string;
     use_rubric_for_grading: boolean;
     free_form_criterion_comments: boolean;
-    rubric: Rubric[];
-    rubric_settings: RubricSettings;
+    rubric: RubricDTO[];
+    rubric_settings: RubricSettingsDTO;
     published: boolean;
     only_visible_to_overrides: boolean;
     locked_for_user: boolean;
@@ -64,26 +64,26 @@ export default interface AssignmentDTO {
     restrict_quantitative_data: boolean;
 }
 
-export interface Rubric {
+export interface RubricDTO {
     id: string;
     points: number;
     description: string;
     long_description: string;
     ignore_for_scoring: boolean;
     criterion_use_range: boolean;
-    ratings: Rating[];
-    outcome_id: number;
+    ratings: RatingDTO[];
+    outcome_id: null | number;
     vendor_guid: null;
 }
 
-export interface Rating {
+export interface RatingDTO {
     id: string;
     points: number;
-    description: Description;
+    description: DescriptionDTO;
     long_description: string;
 }
 
-export enum Description {
+export enum DescriptionDTO {
     Advanced = "Advanced",
     Beginning = "Beginning",
     Orienting = "Orienting",
@@ -91,7 +91,7 @@ export enum Description {
     Undefiend = "Undefiend",
 }
 
-export interface RubricSettings {
+export interface RubricSettingsDTO {
     id: number;
     title: string;
     points_possible: number;

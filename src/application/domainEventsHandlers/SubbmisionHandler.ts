@@ -1,6 +1,6 @@
 import { ISubbmisionHandler } from "../../domain/interfaces/IDomainEventHandlers/ISubbmisionHandler";
 import ISubmissionAPIReciverService from "../../domain/interfaces/IAPIReciverServices/ISubmissionAPIReciverService";
-import { Submission } from "../../domain/models/Submission";
+import Submission from "../../domain/models/Submission";
 
 export class SubbmisionHandler implements ISubbmisionHandler {
     submissionAPIReciverService: ISubmissionAPIReciverService;

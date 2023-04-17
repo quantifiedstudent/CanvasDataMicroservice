@@ -52,7 +52,7 @@ const courses = await commandCourseHandler.GetStudnetCourses(studentCanvasId);
 // console.log(courses);
 
 const assignments = await commandAssignmentHandler.GetStudnetAssignments(studentCanvasId, 12886);
-console.log(assignments);
+// console.log(assignments);
 
 
 
@@ -69,7 +69,7 @@ const submissionsAPIReciverService: SubmissionAPIReciverService =
 
 const manual: ManualFetch = new ManualFetch(token);
 
-// manual.GetAssignmet();
+await manual.combineAssignmentSubbmition();
 
 
 

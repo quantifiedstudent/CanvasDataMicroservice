@@ -29,4 +29,23 @@ export class AssignmentHandler implements IAssignmentHandler {
         return Promise.reject(error);
       }
     }
+
+    async GetStudnetAssignmentById(courseId: number, assignmentId: number): Promise<Assignment> {
+      try {
+        const assignmentsDTO = await this.assignmentAPIReciverService.GetStudnetAssignmentById(
+          courseId,
+          assignmentId
+        );
+        const assignment: Assignment = new Assignment(assignmentsDTO);
+        return assignment;
+      } catch (error) {
+        let message;
+        if (error instanceof Error) message = error.message;
+        else message = String(error);
+        // we'll proceed, but let's report it
+        console.error(message);
+        console.log(error);
+        return Promise.reject(error);
+      }
+    }
   }

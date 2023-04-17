@@ -1,45 +1,30 @@
 // import { AssignmentDTO, Rubric, Rating, RubricSettings } from "./interfaces";
-import AssignmentDTO from "../../infrastructure/dto/AssignmentDTO";
+import AssignmentDTO, { RatingDTO, RubricDTO, RubricSettingsDTO } from "../../infrastructure/dto/AssignmentDTO";
 
 export default class Assignment {
   id: number;
   description: string;
   due_at: Date | null;
-  unlock_at: Date | null;
-  lock_at: Date | null;
   points_possible: number;
   grading_type: string;
   assignment_group_id: number;
   grading_standard_id: number;
   created_at: Date;
   updated_at: Date;
-  peer_reviews: boolean;
-  automatic_peer_reviews: boolean;
   position: number;
   grade_group_students_individually: boolean;
-  anonymous_peer_reviews: boolean;
-  group_category_id: null | number;
-  post_to_sis: boolean;
   moderated_grading: boolean;
   omit_from_final_grade: boolean;
-  intraGroupPeerReviews: boolean;
-  anonymousInstructorAnnotations: boolean;
-  anonymousGrading: boolean;
-  gradersAnonymousToGraders: boolean;
   grader_count: number;
   grader_comments_visible_to_graders: boolean;
   final_grader_id: null | number;
   grader_names_visible_to_final_grader: boolean;
-  allowed_attempts: number;
-  annotatable_attachment_id: null | number;
-  secure_params: string;
   lti_context_id: string;
   course_id: number;
   name: string;
   submission_types: string[];
   has_submitted_submissions: boolean;
   due_date_required: boolean;
-  max_name_length: number;
   in_closed_grading_period: boolean;
   graded_submissions_exist: boolean;
   is_quiz_assignment: boolean;
@@ -51,49 +36,34 @@ export default class Assignment {
   important_dates: boolean;
   html_url: string;
   use_rubric_for_grading: boolean;
-//   rubric: Rubric[];
-//   rubric_settings: RubricSettings;
+  rubric: Rubric[];
+  rubric_settings: RubricSettings | null;
   published: boolean;
 
   constructor(dto: AssignmentDTO) {
     this.id = dto.id;
     this.description = dto.description;
     this.due_at = dto.due_at ? new Date(dto.due_at) : null;
-    this.unlock_at = dto.unlock_at ? new Date(dto.unlock_at) : null;
-    this.lock_at = dto.lock_at ? new Date(dto.lock_at) : null;
     this.points_possible = dto.points_possible;
     this.grading_type = dto.grading_type;
     this.assignment_group_id = dto.assignment_group_id;
     this.grading_standard_id = dto.grading_standard_id;
     this.created_at = new Date(dto.created_at);
     this.updated_at = new Date(dto.updated_at);
-    this.peer_reviews = dto.peer_reviews;
-    this.automatic_peer_reviews = dto.automatic_peer_reviews;
     this.position = dto.position;
     this.grade_group_students_individually = dto.grade_group_students_individually;
-    this.anonymous_peer_reviews = dto.anonymous_peer_reviews;
-    this.group_category_id = dto.group_category_id;
-    this.post_to_sis = dto.post_to_sis;
     this.moderated_grading = dto.moderated_grading;
     this.omit_from_final_grade = dto.omit_from_final_grade;
-    this.intraGroupPeerReviews = dto.intra_group_peer_reviews;
-    this.anonymousInstructorAnnotations = dto.anonymous_instructor_annotations;
-    this.anonymousGrading = dto.anonymous_grading;
-    this.gradersAnonymousToGraders = dto.graders_anonymous_to_graders;
     this.grader_count = dto.grader_count;
     this.grader_comments_visible_to_graders = dto.grader_comments_visible_to_graders;
     this.final_grader_id = dto.final_grader_id;
     this.grader_names_visible_to_final_grader = dto.grader_names_visible_to_final_grader;
-    this.allowed_attempts = dto.allowed_attempts;
-    this.annotatable_attachment_id = dto.annotatable_attachment_id;
-    this.secure_params = dto.secure_params;
     this.lti_context_id = dto.lti_context_id;
     this.course_id = dto.course_id;
     this.name = dto.name;
     this.submission_types = dto.submission_types;
     this.has_submitted_submissions = dto.has_submitted_submissions;
     this.due_date_required = dto.due_date_required;
-    this.max_name_length = dto.max_name_length;
     this.in_closed_grading_period = dto.in_closed_grading_period;
     this.graded_submissions_exist = dto.graded_submissions_exist;
     this.is_quiz_assignment = dto.is_quiz_assignment;
@@ -105,8 +75,83 @@ export default class Assignment {
     this.important_dates = dto.important_dates;
     this.html_url = dto.html_url;
     this.use_rubric_for_grading = dto.free_form_criterion_comments;
-    // this.rubric = dto.rubric;
-    // this.rubric_settings = dto.rubric_settings;
+    if (dto.rubric != null)
+    {
+      this.rubric = dto.rubric.map(
+        (rubricDTO: RubricDTO) => new Rubric(rubricDTO)
+      );
+    }
+    else{
+      this.rubric = [];
+    }
+    if (dto.rubric_settings != null)
+    {
+      this.rubric_settings = new RubricSettings(dto.rubric_settings);
+    }
+    else{
+      this.rubric_settings = null;
+    }
     this.published = dto.published;
+  }
+}
+
+
+export class Rubric {
+  id: string;
+  points: number;
+  description: string;
+  long_description: string;
+  ignore_for_scoring: boolean;
+  criterion_use_range: boolean;
+  ratings: Rating[] = [];
+  outcome_id: null | number;
+  vendor_guid: null;
+
+  constructor(rubricDTO: RubricDTO) {
+    this.id = rubricDTO.id;
+    this.points = rubricDTO.points;
+    this.description = rubricDTO.description;
+    this.long_description = rubricDTO.long_description;
+    this.ignore_for_scoring = rubricDTO.ignore_for_scoring;
+    this.criterion_use_range = rubricDTO.criterion_use_range;
+    for (let rating of rubricDTO.ratings)
+    {
+      this.ratings.push(new Rating(rating));
+    }
+    this.ratings = rubricDTO.ratings;
+    this.outcome_id = rubricDTO.outcome_id;
+    this.vendor_guid = rubricDTO.vendor_guid;
+  }
+}
+
+export class Rating {
+  id: string;
+  points: number;
+  description: string;
+  long_description: string;
+
+  constructor(ratingDto: RatingDTO) {
+    this.id = ratingDto.id;
+    this.points = ratingDto.points;
+    this.description = ratingDto.description;
+    this.long_description = ratingDto.long_description;
+  }
+}
+
+export class RubricSettings {
+  id: number;
+  title: string;
+  points_possible: number;
+  free_form_criterion_comments: boolean;
+  hide_score_total: boolean;
+  hide_points: boolean;
+
+  constructor(dto: RubricSettingsDTO) {
+    this.id = dto.id;
+    this.title = dto.title;
+    this.points_possible = dto.points_possible;
+    this.free_form_criterion_comments = dto.free_form_criterion_comments;
+    this.hide_score_total = dto.hide_score_total;
+    this.hide_points = dto.hide_points;
   }
 }

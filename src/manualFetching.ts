@@ -1,38 +1,68 @@
 import fetch from "node-fetch";
 import BaseCanvasAPIReciverService from "./infrastructure/recivers/BaseCanvasReciverService";
-import StudentDTO from "./infrastructure/dto/StudentDTO";
+import AssignmentAPIReciverService from "./infrastructure/recivers/AssignmentAPIReciverService";
+import IAssignmentAPIReciver from "./domain/interfaces/IAPIReciverServices/IAssignmentAPIReciver";
+import AssignmentDTO from "./infrastructure/dto/AssignmentDTO";
+import IAssignmentHandler from "./domain/interfaces/IDomainEventHandlers/IAssignmentHandler";
+import { AssignmentHandler } from "./application/domainEventsHandlers/AssignmentHandler";
+import Assignment from "./domain/models/Assignment";
+import ISubmissionAPIReciverService from "./domain/interfaces/IAPIReciverServices/ISubmissionAPIReciverService";
+import SubmissionAPIReciverService from "./infrastructure/recivers/SubmissionAPIReciverService";
+import { ISubbmisionHandler } from "./domain/interfaces/IDomainEventHandlers/ISubbmisionHandler";
+import { SubbmisionHandler } from "./application/domainEventsHandlers/SubbmisionHandler";
+import Submission from "./domain/models/Submission";
 
 export default class ManualFetch extends BaseCanvasAPIReciverService {
-    // GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
-  url = "https://fhict.instructure.com/api/v1/courses/12886/assignments/216054/submissions/24412";
-  // url = "https://fhict.instructure.com/api/v1/users/self";
+  
+  assignmentHandler: IAssignmentHandler;
+  assignmentAPIReciverService: IAssignmentAPIReciver;
+  
+  submissionAPIReciverService: ISubmissionAPIReciverService;
+  subbmisionHandler: ISubbmisionHandler;
+
   constructor(token: string) {
     super(token);
+    this.assignmentAPIReciverService = new AssignmentAPIReciverService(token);
+    this.assignmentHandler = new AssignmentHandler(this.assignmentAPIReciverService);
+    this.submissionAPIReciverService = new SubmissionAPIReciverService(token);
+    this.subbmisionHandler = new SubbmisionHandler(this.submissionAPIReciverService);
   }
 
-  async GetAssignmet() {
-    const header = {
-      headers: {
-        Authorization: `Bearer ${this.token}`,
-      },
-    };
+  async GetAssignmet(): Promise<Assignment> {
+    // Personal Course Assignmet: Personal Project Technology Research
+    // const assignment: Assignment = await this.assignmentHandler.GetStudnetAssignmentById(13086, 220337)
+    const assignment: Assignment = await this.assignmentHandler.GetStudnetAssignmentById(12525, 206652)
+    // console.log(assignment);
+    return assignment
+  }
 
-    const options = {
-      method: "GET",
-      ...header,
-    };
+  async GetSubmission(): Promise<Submission>{
+    // const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions(13086, 220337, 24412)
+    const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions(12525, 206652, 24412)
+    // console.log(submission);
+    return submission
+  }
 
-    try {
-      const response = await fetch(this.url, options);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      let message;
-      if (error instanceof Error) message = error.message;
-      else message = String(error);
-      // we'll proceed, but let's report it
-      console.error(message);
-      console.log(error);
+  async combineAssignmentSubbmition(){
+    console.log("bb")
+    const assignment = await this.GetAssignmet();
+    const submission = await this.GetSubmission();
+
+    for(let rubric of assignment.rubric)
+    {
+      if (submission.full_rubric_assessment != null)
+      {
+        for(let criteria of submission.full_rubric_assessment.criterias)
+          {
+            if(rubric.id == criteria.criterion_id)
+            {
+              console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+              console.log(criteria.points, "points out of" , rubric.points)
+              console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            }
+          }
+      }
     }
+    console.log("bb")
   }
 }

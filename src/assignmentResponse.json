@@ -1,0 +1,272 @@
+// https://fhict.instructure.com/api/v1/courses/12886/assignments/216056
+{
+	"id": 220337,
+	"description": "<link rel=\"stylesheet\" href=\"https://instructure-uploads-eu.s3.eu-west-1.amazonaws.com/account_24640000000000001/attachments/855227/mobile.css\"><p>This assignment will look into the possibilities of technology that could be used for development of my personal project (music app). The different technologies will be assessed based on a different set of requirements, which will be explained in this assignment.</p>\n<p>Requirements:</p>\n<p>- Requirements of the technology will be described based on an earlier study about user needs.<br>- Minding&nbsp;<span>trustworthiness, multiple sources will be investigated</span><br>- Technology for the application development will be choosen</p>\n<p>&nbsp;</p>",
+	"due_at": null,
+	"unlock_at": null,
+	"lock_at": null,
+	"points_possible": 5.0,
+	"grading_type": "letter_grade",
+	"assignment_group_id": 34168,
+	"grading_standard_id": 13397,
+	"created_at": "2023-02-07T12:00:43Z",
+	"updated_at": "2023-03-26T16:53:13Z",
+	"peer_reviews": false,
+	"automatic_peer_reviews": false,
+	"position": 3,
+	"grade_group_students_individually": false,
+	"anonymous_peer_reviews": false,
+	"group_category_id": null,
+	"post_to_sis": false,
+	"moderated_grading": false,
+	"omit_from_final_grade": false,
+	"intra_group_peer_reviews": false,
+	"anonymous_instructor_annotations": false,
+	"anonymous_grading": false,
+	"graders_anonymous_to_graders": false,
+	"grader_count": 0,
+	"grader_comments_visible_to_graders": true,
+	"final_grader_id": null,
+	"grader_names_visible_to_final_grader": true,
+	"allowed_attempts": -1,
+	"annotatable_attachment_id": null,
+	"secure_params": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsdGlfYXNzaWdubWVudF9pZCI6IjFmYzMyMjY1LWEyMTktNDk0ZC1hNzZmLWQwYzA1NjYwNzJhYSIsImx0aV9hc3NpZ25tZW50X2Rlc2NyaXB0aW9uIjoiXHUwMDNjcFx1MDAzZVRoaXMgYXNzaWdubWVudCB3aWxsIGxvb2sgaW50byB0aGUgcG9zc2liaWxpdGllcyBvZiB0ZWNobm9sb2d5IHRoYXQgY291bGQgYmUgdXNlZCBmb3IgZGV2ZWxvcG1lbnQgb2YgbXkgcGVyc29uYWwgcHJvamVjdCAobXVzaWMgYXBwKS4gVGhlIGRpZmZlcmVudCB0ZWNobm9sb2dpZXMgd2lsbCBiZSBhc3Nlc3NlZCBiYXNlZCBvbiBhIGRpZmZlcmVudCBzZXQgb2YgcmVxdWlyZW1lbnRzLCB3aGljaCB3aWxsIGJlIGV4cGxhaW5lZCBpbiB0aGlzIGFzc2lnbm1lbnQuXHUwMDNjL3BcdTAwM2Vcblx1MDAzY3BcdTAwM2VSZXF1aXJlbWVudHM6XHUwMDNjL3BcdTAwM2Vcblx1MDAzY3BcdTAwM2UtIFJlcXVpcmVtZW50cyBvZiB0aGUgdGVjaG5vbG9neSB3aWxsIGJlIGRlc2NyaWJlZCBiYXNlZCBvbiBhbiBlYXJsaWVyIHN0dWR5IGFib3V0IHVzZXIgbmVlZHMuXHUwMDNjYnJcdTAwM2UtIE1pbmRpbmdcdTAwMjZuYnNwO1x1MDAzY3NwYW5cdTAwM2V0cnVzdHdvcnRoaW5lc3MsIG11bHRpcGxlIHNvdXJjZXMgd2lsbCBiZSBpbnZlc3RpZ2F0ZWRcdTAwM2Mvc3Bhblx1MDAzZVx1MDAzY2JyXHUwMDNlLSBUZWNobm9sb2d5IGZvciB0aGUgYXBwbGljYXRpb24gZGV2ZWxvcG1lbnQgd2lsbCBiZSBjaG9vc2VuXHUwMDNjL3BcdTAwM2Vcblx1MDAzY3BcdTAwM2VcdTAwMjZuYnNwO1x1MDAzYy9wXHUwMDNlIn0.bhjMUb-82SmSgAAu-qOXMnMYvh5C4_WiOzScsbrg_UE",
+	"lti_context_id": "1fc32265-a219-494d-a76f-d0c0566072aa",
+	"course_id": 13086,
+	"name": "🏁Personal Project Technology Research",
+	"submission_types": [
+		"online_upload"
+	],
+	"has_submitted_submissions": true,
+	"due_date_required": false,
+	"max_name_length": 255,
+	"in_closed_grading_period": false,
+	"graded_submissions_exist": false,
+	"is_quiz_assignment": false,
+	"can_duplicate": true,
+	"original_course_id": null,
+	"original_assignment_id": null,
+	"original_lti_resource_link_id": null,
+	"original_assignment_name": null,
+	"original_quiz_id": null,
+	"workflow_state": "published",
+	"important_dates": false,
+	"muted": true,
+	"html_url": "https://fhict.instructure.com/courses/13086/assignments/220337",
+	"has_overrides": false,
+	"sis_assignment_id": null,
+	"integration_id": null,
+	"integration_data": {},
+	"allowed_extensions": [
+		"doc.",
+		"docx",
+		"pdf"
+	],
+	"use_rubric_for_grading": false,
+	"free_form_criterion_comments": false,
+	"rubric": [
+		{
+			"id": "_4574",
+			"points": 5.0,
+			"description": "Correct usage of decision matrix",
+			"long_description": "",
+			"criterion_use_range": false,
+			"ratings": [
+				{
+					"id": "blank",
+					"points": 5.0,
+					"description": "Full Marks",
+					"long_description": ""
+				},
+				{
+					"id": "blank_2",
+					"points": 0.0,
+					"description": "No Marks",
+					"long_description": ""
+				}
+			]
+		},
+		{
+			"id": "_2532",
+			"points": 5.0,
+			"description": "Clear arguments for choosing certain technology",
+			"long_description": "",
+			"criterion_use_range": false,
+			"ratings": [
+				{
+					"id": "_9960",
+					"points": 5.0,
+					"description": "Full Marks",
+					"long_description": ""
+				},
+				{
+					"id": "_630",
+					"points": 0.0,
+					"description": "No Marks",
+					"long_description": ""
+				}
+			]
+		},
+		{
+			"id": "_5795",
+			"points": 5.0,
+			"description": "IPS-2.1",
+			"long_description": "<p><strong>Investigative Problem Solving</strong><br><br><strong>EN</strong><br>You determine the direction of the solution for a given problem and choose an appropriate approach.<br><br><strong>NL</strong><br>Je bepaalt voor een gegeven probleem zelf de richting van de oplossing en kiest een passende aanpak.<br><br><strong>Context EN</strong><br><em>(HBO-i context) Critically consider ICT assignments from various perspectives, identify problems, finding an effective approach and coming up with appropriate solutions</em><br><br><strong>Context NL</strong><br><em>(HBO-i context) ICT-opdrachten kritisch vanuit verschillende perspectieven beschouwen, problemen identificeren, vinden van een effectieve aanpak en komen tot passende oplossingen.</em></p>",
+			"ignore_for_scoring": false,
+			"criterion_use_range": false,
+			"ratings": [
+				{
+					"id": "_8027",
+					"points": 5.0,
+					"description": "Outstanding",
+					"long_description": ""
+				},
+				{
+					"id": "_4212",
+					"points": 4.0,
+					"description": "Good",
+					"long_description": ""
+				},
+				{
+					"id": "_5636",
+					"points": 3.0,
+					"description": "Satisfactory",
+					"long_description": ""
+				},
+				{
+					"id": "_6345",
+					"points": 0.0,
+					"description": "Unsatisfactory",
+					"long_description": ""
+				}
+			],
+			"outcome_id": 11466,
+			"vendor_guid": "OPDIPS-2.1"
+		},
+		{
+			"id": "_3746",
+			"points": 5.0,
+			"description": "IPS-2.3",
+			"long_description": "<p><strong>Investigative Problem Solving</strong><br><br><strong>EN</strong><br>You actively look for alternatives.<br><br><strong>NL</strong><br>Je zoekt actief naar alternatieven.<br><br><strong>Context EN</strong><br><em>(HBO-i context) Critically consider ICT assignments from various perspectives, identify problems, finding an effective approach and coming up with appropriate solutions</em><br><br><strong>Context NL</strong><br><em>(HBO-i context) ICT-opdrachten kritisch vanuit verschillende perspectieven beschouwen, problemen identificeren, vinden van een effectieve aanpak en komen tot passende oplossingen.</em></p>",
+			"ignore_for_scoring": false,
+			"criterion_use_range": false,
+			"ratings": [
+				{
+					"id": "_3188",
+					"points": 5.0,
+					"description": "Outstanding",
+					"long_description": ""
+				},
+				{
+					"id": "_458",
+					"points": 4.0,
+					"description": "Good",
+					"long_description": ""
+				},
+				{
+					"id": "_9061",
+					"points": 3.0,
+					"description": "Satisfactory",
+					"long_description": ""
+				},
+				{
+					"id": "_2717",
+					"points": 0.0,
+					"description": "Unsatisfactory",
+					"long_description": ""
+				}
+			],
+			"outcome_id": 11468,
+			"vendor_guid": "OPDIPS-2.3"
+		},
+		{
+			"id": "_4581",
+			"points": 5.0,
+			"description": "Advise-S2.2",
+			"long_description": "<p><strong>EN<br></strong> Provide advice on a section of the architecture or a limited software system.</p>\r\n<p><strong>NL<br></strong> Adviseren over een onderdeel van een architectuur of een beperkt softwaresysteem.</p>",
+			"ignore_for_scoring": false,
+			"criterion_use_range": false,
+			"ratings": [
+				{
+					"id": "_9232",
+					"points": 5.0,
+					"description": "Outstanding",
+					"long_description": ""
+				},
+				{
+					"id": "_1293",
+					"points": 4.0,
+					"description": "Good",
+					"long_description": ""
+				},
+				{
+					"id": "_6155",
+					"points": 3.0,
+					"description": "Satisfactory",
+					"long_description": ""
+				},
+				{
+					"id": "_4373",
+					"points": 0.0,
+					"description": "Unsatisfactory",
+					"long_description": ""
+				}
+			],
+			"outcome_id": 6827,
+			"vendor_guid": "Advice-S2.2"
+		},
+		{
+			"id": "_4554",
+			"points": 5.0,
+			"description": "Advise-U2.2",
+			"long_description": "<p><strong>EN<br></strong> Make proposals about the realisation choices, such as the technologies to be used, while keeping the users and company context in mind.</p>\r\n<p><strong> NL<br></strong> Voorstellen doen over de realisatiekeuzes, zoals de te gebruiken technologieën, daarbi jrekening houdend met gebruikers en bedrijfscontext.</p>",
+			"ignore_for_scoring": false,
+			"criterion_use_range": false,
+			"ratings": [
+				{
+					"id": "_6627",
+					"points": 5.0,
+					"description": "Outstanding",
+					"long_description": ""
+				},
+				{
+					"id": "_6435",
+					"points": 4.0,
+					"description": "Good",
+					"long_description": ""
+				},
+				{
+					"id": "_1011",
+					"points": 3.0,
+					"description": "Satisfactory",
+					"long_description": ""
+				},
+				{
+					"id": "_8329",
+					"points": 0.0,
+					"description": "Unsatisfactory",
+					"long_description": ""
+				}
+			],
+			"outcome_id": 6949,
+			"vendor_guid": "Advice-U2.2"
+		}
+	],
+	"rubric_settings": {
+		"id": 41926,
+		"title": "Some Rubric (4)",
+		"points_possible": 30.0,
+		"free_form_criterion_comments": false,
+		"hide_score_total": false,
+		"hide_points": false
+	},
+	"published": true,
+	"unpublishable": false,
+	"only_visible_to_overrides": false,
+	"locked_for_user": false,
+	"submissions_download_url": "https://fhict.instructure.com/courses/13086/assignments/220337/submissions?zip=1",
+	"post_manually": false,
+	"anonymize_students": false,
+	"require_lockdown_browser": false,
+	"restrict_quantitative_data": false
+}

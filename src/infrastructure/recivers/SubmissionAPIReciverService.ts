@@ -9,7 +9,7 @@ export default class SubmissionAPIReciverService extends BaseCanvasAPIReciverSer
     // we have michael, if we use user_id
     // GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
 
-    apiRoute = (idCourse: number, idAssignment: number, studentCanvasId: number) => `/api/v1/courses/${idCourse.toString()}/assignments/${idAssignment.toString()}/submissions/${studentCanvasId.toString()}`;
+    apiRoute = (idCourse: number, idAssignment: number, studentCanvasId: number) => `/api/v1/courses/${idCourse.toString()}/assignments/${idAssignment.toString()}/submissions/${studentCanvasId.toString()}?include=full_rubric_assessment`;
 
     constructor(token: string) {
         super(token);
