@@ -7,8 +7,8 @@ import { CommandStudentHandler } from "./application/commandHandlers/CommandStud
 import { CommandCourseHandler } from "./application/commandHandlers/CommandCourseHandler";
 import { CommandAssignmentHandler } from "./application/commandHandlers/CommandAssignmentHandler";
 import express from "express";
+import routerCommand from './application/commandHandlers/CommandSubbmisionHandler'
 
-const submmisons = require('./application/commandHandlers/CommandSubbmisionHandler')
 
 console.log("Hello world");
 // EXPRESS CONFIG
@@ -19,7 +19,7 @@ const PORT: number = 7000;
 // Middleware that parses body to JSON format
 app.use(express.json());
 
-app.use('/GetSubbmision', submmisons);
+app.use('/GetSubbmision', routerCommand);
 
 
 app.get("/", (req, res) => {
