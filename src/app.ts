@@ -6,8 +6,9 @@ import ManualFetch from "./manualFetching";
 import { CommandStudentHandler } from "./application/commandHandlers/CommandStudentHandler";
 import { CommandCourseHandler } from "./application/commandHandlers/CommandCourseHandler";
 import { CommandAssignmentHandler } from "./application/commandHandlers/CommandAssignmentHandler";
-import * as subbmissionRouter from "./application/commandHandlers/CommandSubbmisionHandler"
 import express from "express";
+import routerCommand from './application/commandHandlers/CommandSubbmisionHandler'
+
 
 console.log("Hello world");
 // EXPRESS CONFIG
@@ -58,15 +59,6 @@ const assignments = await commandAssignmentHandler.GetStudnetAssignments(student
 
 
 
-const assignmentAPIReciverService: AssignmentAPIReciverService =
-  new AssignmentAPIReciverService(token);
-const submissionsAPIReciverService: SubmissionAPIReciverService =
-  new SubmissionAPIReciverService(token);
-
-// console.log(await assignmentsAPIReciverService.GetStudnetAssignments(12525));
-
-// console.log(await submissionsAPIReciverService.GetStudnetSubmissions(12525, 1, ));
-
 const manual: ManualFetch = new ManualFetch(token);
 
 await manual.combineAssignmentSubbmition();
@@ -74,3 +66,6 @@ await manual.combineAssignmentSubbmition();
 
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+
+
+app.use('/GetSubbmision', routerCommand);
