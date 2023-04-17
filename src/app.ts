@@ -19,7 +19,6 @@ const PORT: number = 7000;
 // Middleware that parses body to JSON format
 app.use(express.json());
 
-app.use('/GetSubbmision', routerCommand);
 
 
 app.get("/", (req, res) => {
@@ -37,42 +36,14 @@ function GetPrivateToken(): string {
 
 const token = GetPrivateToken();
 
-const commandStudentHandler: CommandStudentHandler = new CommandStudentHandler(token);
-
-const commandCourseHandler: CommandCourseHandler = new CommandCourseHandler(token);
-
-const commandAssignmentHandler: CommandAssignmentHandler = new CommandAssignmentHandler(token);
 
 
-const student = await commandStudentHandler.GetStudnet();
-// console.log(student);
-
-const studentCanvasId = await commandStudentHandler.GetStudentCanvasId();
-// console.log(studentCanvasId);
-
-const courses = await commandCourseHandler.GetStudnetCourses(studentCanvasId);
-// console.log(courses);
-
-const assignments = await commandAssignmentHandler.GetStudnetAssignments(studentCanvasId, 12886);
-console.log(assignments);
-
-
-
-
-
-const assignmentAPIReciverService: AssignmentAPIReciverService =
-  new AssignmentAPIReciverService(token);
-const submissionsAPIReciverService: SubmissionAPIReciverService =
-  new SubmissionAPIReciverService(token);
-
-// console.log(await assignmentsAPIReciverService.GetStudnetAssignments(12525));
-
-// console.log(await submissionsAPIReciverService.GetStudnetSubmissions(12525, 1, ));
 
 const manual: ManualFetch = new ManualFetch(token);
-
-// manual.GetAssignmet();
 
 
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+
+
+app.use('/GetSubbmision', routerCommand);
