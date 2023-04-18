@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import AssignmentAPIReciverService from "./infrastructure/recivers/AssignmentAPIReciverService";
 import SubmissionAPIReciverService from "./infrastructure/recivers/SubmissionAPIReciverService";
 import CourseAPIReciverService from "./infrastructure/recivers/CourseAPIReciver";
@@ -8,7 +7,7 @@ import { CommandCourseHandler } from "./application/commandHandlers/CommandCours
 import { CommandAssignmentHandler } from "./application/commandHandlers/CommandAssignmentHandler";
 import express from "express";
 import routerCommand from './application/commandHandlers/CommandSubbmisionHandler'
-
+import GetPrivateToken from './GettingToken';
 
 console.log("Hello world");
 // EXPRESS CONFIG
@@ -19,29 +18,17 @@ const PORT: number = 7000;
 // Middleware that parses body to JSON format
 app.use(express.json());
 
-
+const token = GetPrivateToken();
 
 app.get("/", (req, res) => {
   res.status(200).send("welcome to the website");
 });
-
-function GetPrivateToken(): string {
-  try {
-    const token = fs.readFileSync("./src/PrivateToken.txt", "utf-8");
-    return token;
-  } catch (err) {
-    throw err;
-  }
-}
-
-const token = GetPrivateToken();
 
 const commandStudentHandler: CommandStudentHandler = new CommandStudentHandler(token);
 
 const commandCourseHandler: CommandCourseHandler = new CommandCourseHandler(token);
 
 const commandAssignmentHandler: CommandAssignmentHandler = new CommandAssignmentHandler(token);
-
 
 const student = await commandStudentHandler.GetStudnet();
 // console.log(student);
@@ -55,17 +42,11 @@ const courses = await commandCourseHandler.GetStudnetCourses(studentCanvasId);
 const assignments = await commandAssignmentHandler.GetStudnetAssignments(studentCanvasId, 12886);
 // console.log(assignments);
 
-
-
-
-
 const manual: ManualFetch = new ManualFetch(token);
 
 await manual.combineAssignmentSubbmition();
 
-
-
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
 
-app.use('/GetSubbmision', routerCommand);
+app.use('/subbmision', routerCommand);
