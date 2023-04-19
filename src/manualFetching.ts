@@ -13,10 +13,10 @@ import { SubbmisionHandler } from "./application/domainEventsHandlers/Subbmision
 import Submission from "./domain/models/Submission";
 
 export default class ManualFetch extends BaseCanvasAPIReciverService {
-  
+
   assignmentHandler: IAssignmentHandler;
   assignmentAPIReciverService: IAssignmentAPIReciver;
-  
+
   submissionAPIReciverService: ISubmissionAPIReciverService;
   subbmisionHandler: ISubbmisionHandler;
 
@@ -36,31 +36,27 @@ export default class ManualFetch extends BaseCanvasAPIReciverService {
     return assignment
   }
 
-  async GetSubmission(): Promise<Submission>{
+  async GetSubmission(): Promise<Submission> {
     // const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions(13086, 220337, 24412)
-    const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions(12525, 206652, 24412)
+    const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions(12525, 206652, 26942)
     // console.log(submission);
     return submission
   }
 
-  async combineAssignmentSubbmition(){
+  async combineAssignmentSubbmition() {
     console.log("bb")
     const assignment = await this.GetAssignmet();
     const submission = await this.GetSubmission();
 
-    for(let rubric of assignment.rubric)
-    {
-      if (submission.full_rubric_assessment != null)
-      {
-        for(let criteria of submission.full_rubric_assessment.criterias)
-          {
-            if(rubric.id == criteria.criterion_id)
-            {
-              console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-              console.log(criteria.points, "points out of" , rubric.points)
-              console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-            }
+    for (let rubric of assignment.rubric) {
+      if (submission.full_rubric_assessment != null) {
+        for (let criteria of submission.full_rubric_assessment.criterias) {
+          if (rubric.id == criteria.criterion_id) {
+            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            console.log(criteria.points, "points out of", rubric.points)
+            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
           }
+        }
       }
     }
     console.log("bb")

@@ -52,7 +52,7 @@ const studentCanvasId = await commandStudentHandler.GetStudentCanvasId();
 const courses = await commandCourseHandler.GetStudnetCourses(studentCanvasId);
 // console.log(courses);
 
-const assignments = await commandAssignmentHandler.GetStudnetAssignments(studentCanvasId, 12886);
+const assignments = await commandAssignmentHandler.GetStudnetAssignments(studentCanvasId, 12525);
 // console.log(assignments);
 
 

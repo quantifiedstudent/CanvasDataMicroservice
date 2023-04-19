@@ -67,13 +67,13 @@ export interface FullRubricAssessmentDTO {
   assessment_type: string;
   assessor_id: number;
   artifact_attempt: number;
-  data: CriteriaDTO[];
+  data: GradedCriteriaDTO[];
   rubric_association: RubricAssociationDTO;
   assessor_name: string;
   assessor_avatar_url: string;
 }
 
-export interface CriteriaDTO {
+export interface GradedCriteriaDTO {
   id: string;
   criterion_id: string;
   learning_outcome_id: number | null;

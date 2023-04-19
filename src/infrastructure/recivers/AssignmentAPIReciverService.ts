@@ -3,7 +3,7 @@ import BaseCanvasAPIReciverService from "./BaseCanvasReciverService";
 import AssignmentDTO from "../dto/AssignmentDTO";
 import IAssignmentAPIReciver from "../../domain/interfaces/IAPIReciverServices/IAssignmentAPIReciver";
 
-export default class AssignmentAPIReciverService extends BaseCanvasAPIReciverService implements IAssignmentAPIReciver{
+export default class AssignmentAPIReciverService extends BaseCanvasAPIReciverService implements IAssignmentAPIReciver {
   apiRouteAll = (studentCanvasId: number, courseId: number) => `/api/v1/users/${studentCanvasId.toString()}/courses/${courseId.toString()}/assignments`;
   apiRouteById = (courseId: number, assignmentId: number) => `/api/v1/courses/${courseId.toString()}/assignments/${assignmentId.toString()}`;
 
@@ -24,11 +24,11 @@ export default class AssignmentAPIReciverService extends BaseCanvasAPIReciverSer
     };
 
     try {
+      console.log(this.url + this.apiRouteAll(studentCanvasId, courseId));
       const response = await fetch(this.url + this.apiRouteAll(studentCanvasId, courseId), options);
       const data = await response.json();
       const assignmentsDTO: AssignmentDTO[] = [];
-      for(let assignmentDTO of <AssignmentDTO[]>data)
-      {
+      for (let assignmentDTO of <AssignmentDTO[]>data) {
         assignmentsDTO.push(<AssignmentDTO>assignmentDTO)
       }
       return assignmentsDTO;
