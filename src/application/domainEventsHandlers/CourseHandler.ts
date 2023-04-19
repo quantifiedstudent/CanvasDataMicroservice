@@ -8,10 +8,10 @@ export class CourseHandler implements ICourseHandler {
   constructor(courseAPIReciverService: ICourseAPIReciver) {
     this.courseAPIReciverService = courseAPIReciverService;
   }
-  async GetStudnetCourses(studentCanvasId: number): Promise<Course[]> {
+  async GetStudnetCourses(studentCanvasId: string): Promise<Course[]> {
     try {
       const coursesDTO = await this.courseAPIReciverService.GetStudnetCourses(
-        studentCanvasId
+        +studentCanvasId
       );
       const courses: Course[] = [];
       for (let courseDTO of coursesDTO) {

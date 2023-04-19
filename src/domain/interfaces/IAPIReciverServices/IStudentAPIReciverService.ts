@@ -1,6 +1,6 @@
 import StudentDTO from "../../../infrastructure/dto/StudentDTO";
 
 export interface IStudentAPIReciverService {
-  GetStudnet(): Promise<StudentDTO>;
-  GetStudentCanvasId(): Promise<number>;
+  GetStudnet(studentUserId: number): Promise<StudentDTO>;
+  GetStudentCanvasIdFromToken(): Promise<number>;
 }

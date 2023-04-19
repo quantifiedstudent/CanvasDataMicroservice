@@ -8,9 +8,9 @@ export class SubbmisionHandler implements ISubbmisionHandler {
     constructor(submissionAPIReciverService: ISubmissionAPIReciverService) {
         this.submissionAPIReciverService = submissionAPIReciverService;
     }
-    async GetStudnetSubmissions(idCourse: number, idAssignment: number, studentCanvasId: number): Promise<Submission> {
+    async GetStudnetSubmissions(idCourse: string, idAssignment: string, studentCanvasId: string): Promise<Submission> {
         try {
-            const submissionDTO = await this.submissionAPIReciverService.GetStudnetSubmissions(idCourse, idAssignment, studentCanvasId);
+            const submissionDTO = await this.submissionAPIReciverService.GetStudnetSubmissions(+idCourse, +idAssignment, +studentCanvasId);
             return new Submission(submissionDTO);
         } catch (error) {
             let message;

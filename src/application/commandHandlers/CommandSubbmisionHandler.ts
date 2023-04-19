@@ -8,8 +8,16 @@ const router = express.Router();
 const submissionAPIReciverService = new SubmissionAPIReciverService(GetPrivateToken());
 const subbmisionHandler = new SubbmisionHandler(submissionAPIReciverService);
 
-router.get('/:courseID/:userID/assigment/:assigmnrtID', function (req, res) {
-    res.status(200).send("");
+
+
+router.get('/course/:courseId/student/:studentId/assigment/:assignmentsId', async function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    try {
+        res.json(await subbmisionHandler.GetStudnetSubmissions(req.params.courseId, req.params.assignmentsId, req.params.studentId));
+    } catch (err) {
+        res.status(500);
+        res.json(err);
+    }
 });
 
 export default router;

@@ -1,6 +1,6 @@
 import { Student } from "../../models/Student";
 
 export interface IStudentHandler {
-  GetStudnet(): Promise<Student>;
-  GetStudentCanvasId(): Promise<number>;
+  GetStudnet(studentUserId: string): Promise<Student>;
+  GetStudentCanvasIdFromToken(): Promise<number>;
 }

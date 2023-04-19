@@ -24,7 +24,7 @@ export default class AssignmentAPIReciverService extends BaseCanvasAPIReciverSer
     };
 
     try {
-      console.log(this.url + this.apiRouteAll(studentCanvasId, courseId));
+      //console.log(this.url + this.apiRouteAll(studentCanvasId, courseId));
       const response = await fetch(this.url + this.apiRouteAll(studentCanvasId, courseId), options);
       const data = await response.json();
       const assignmentsDTO: AssignmentDTO[] = [];

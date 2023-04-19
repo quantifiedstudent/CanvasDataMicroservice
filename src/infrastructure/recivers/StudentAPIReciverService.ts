@@ -3,14 +3,14 @@ import BaseCanvasAPIReciverService from "../recivers/BaseCanvasReciverService";
 import StudentDTO from "../dto/StudentDTO";
 import { IStudentAPIReciverService } from "../../domain/interfaces/IAPIReciverServices/IStudentAPIReciverService";
 
-export default class StudentAPIReciverService extends BaseCanvasAPIReciverService implements IStudentAPIReciverService{
+export default class StudentAPIReciverService extends BaseCanvasAPIReciverService implements IStudentAPIReciverService {
   apiRoute = "/api/v1/users/";
 
   constructor(token: string) {
     super(token);
   }
 
-  async GetStudnet(): Promise<StudentDTO> {
+  async GetStudnet(studentUserId: number): Promise<StudentDTO> {
     const header = {
       headers: {
         Authorization: `Bearer ${this.token}`,
@@ -23,7 +23,7 @@ export default class StudentAPIReciverService extends BaseCanvasAPIReciverServic
     };
 
     try {
-      const parameter = "self?=";
+      const parameter = studentUserId;
       const response = await fetch(this.url + this.apiRoute + parameter, options);
       const data = await response.json();
       return <StudentDTO>data;
@@ -37,7 +37,7 @@ export default class StudentAPIReciverService extends BaseCanvasAPIReciverServic
     }
   }
 
-  async GetStudentCanvasId(): Promise<number> {
+  async GetStudentCanvasIdFromToken(): Promise<number> {
     const header = {
       headers: {
         Authorization: `Bearer ${this.token}`,

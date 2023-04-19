@@ -31,20 +31,20 @@ export default class ManualFetch extends BaseCanvasAPIReciverService {
   async GetAssignmet(): Promise<Assignment> {
     // Personal Course Assignmet: Personal Project Technology Research
     // const assignment: Assignment = await this.assignmentHandler.GetStudnetAssignmentById(13086, 220337)
-    const assignment: Assignment = await this.assignmentHandler.GetStudnetAssignmentById(12525, 206652)
+    const assignment: Assignment = await this.assignmentHandler.GetStudnetAssignmentById((12525).toString(), (206652).toString())
     // console.log(assignment);
     return assignment
   }
 
   async GetSubmission(): Promise<Submission> {
     // const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions(13086, 220337, 24412)
-    const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions(12525, 206652, 26942)
+    const submission: Submission = await this.subbmisionHandler.GetStudnetSubmissions((12525).toString(), (206652).toString(), (26942).toString())
     // console.log(submission);
     return submission
   }
 
   async combineAssignmentSubbmition() {
-    console.log("bb")
+    //  console.log("bb")
     const assignment = await this.GetAssignmet();
     const submission = await this.GetSubmission();
 
@@ -52,13 +52,13 @@ export default class ManualFetch extends BaseCanvasAPIReciverService {
       if (submission.full_rubric_assessment != null) {
         for (let criteria of submission.full_rubric_assessment.criterias) {
           if (rubric.id == criteria.criterion_id) {
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-            console.log(criteria.points, "points out of", rubric.points)
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            //console.log(criteria.points, "points out of", rubric.points)
+            //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
           }
         }
       }
     }
-    console.log("bb")
+    //    console.log("bb")
   }
 }

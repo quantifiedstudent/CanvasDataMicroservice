@@ -1,28 +1,24 @@
-import ICourseAPIReciver from "../../domain/interfaces/IAPIReciverServices/ICourseAPIReciver";
-import ICourseHandler from "../../domain/interfaces/IDomainEventHandlers/ICourseHandler";
-import Course from "../../domain/models/Course";
-import CourseAPIReciverService from "../../infrastructure/recivers/CourseAPIReciver";
+import express from "express";
+import CourseAPIReciver from "../../infrastructure/recivers/CourseAPIReciver";
+import GetPrivateToken from "../../GettingToken";
 import { CourseHandler } from "../domainEventsHandlers/CourseHandler";
 
-export class CommandCourseHandler {
-    courseHandler: ICourseHandler;
-    courseAPIReciverService: ICourseAPIReciver;
-  
-    constructor(token: string) {
-      this.courseAPIReciverService = new CourseAPIReciverService(token);
-      this.courseHandler = new CourseHandler(this.courseAPIReciverService);
-    }
-    async GetStudnetCourses(courseCanvasId: number): Promise<Course[]> {
-      try {
-        return await this.courseHandler.GetStudnetCourses(courseCanvasId);
-      } catch (error) {
-        let message;
-        if (error instanceof Error) message = error.message;
-        else message = String(error);
-        // we'll proceed, but let's report it
-        console.error(message);
-        console.log(error);
-        return Promise.reject(error);
-      }
-    }
+const router = express.Router();
+
+const courseAPIReciver = new CourseAPIReciver(GetPrivateToken());
+const courseHandler = new CourseHandler(courseAPIReciver);
+
+
+
+router.get('/student/:studentId', async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  try {
+    res.json(await courseHandler.GetStudnetCourses(req.params.studentId));
+  } catch (err) {
+    res.status(500);
+    res.json(err);
   }
+});
+
+export default router;
+

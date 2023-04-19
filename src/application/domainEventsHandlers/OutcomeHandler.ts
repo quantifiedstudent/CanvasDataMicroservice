@@ -8,9 +8,9 @@ export class OutcomeHandler implements IOutcomeHandler {
     constructor(outcomeAPIReciverService: IOutcomeAPIReciverService) {
         this.outcomeAPIReciverService = outcomeAPIReciverService;
     }
-    async GetStudnetSubmissions(idCourse: number, idAssignment: number, studentCanvasId: number): Promise<Outcome> {
+    async GetStudnetOutcome(idCourse: string, idAssignment: string, studentCanvasId: string): Promise<Outcome> {
         try {
-            const outcomeDTO = await this.outcomeAPIReciverService.GetStudnetOutcome(idCourse, idAssignment, studentCanvasId);
+            const outcomeDTO = await this.outcomeAPIReciverService.GetStudnetOutcome(+idCourse, +idAssignment, +studentCanvasId);
             return new Outcome(outcomeDTO);
         } catch (error) {
             let message;

@@ -9,9 +9,9 @@ export class StudentHandler implements IStudentHandler {
   constructor(studentAPIReciverService: IStudentAPIReciverService) {
     this.studentAPIReciverService = studentAPIReciverService;
   }
-  async GetStudnet(): Promise<Student> {
+  async GetStudnet(studentUserId: string): Promise<Student> {
     try {
-      const studentDTO = await this.studentAPIReciverService.GetStudnet();
+      const studentDTO = await this.studentAPIReciverService.GetStudnet(+studentUserId);
       return new Student(studentDTO);
     } catch (error) {
       let message;
@@ -23,9 +23,9 @@ export class StudentHandler implements IStudentHandler {
       return Promise.reject(error);
     }
   }
-  async GetStudentCanvasId(): Promise<number> {
+  async GetStudentCanvasIdFromToken(): Promise<number> {
     try {
-      return await this.studentAPIReciverService.GetStudentCanvasId()
+      return await this.studentAPIReciverService.GetStudentCanvasIdFromToken()
     } catch (error) {
       let message;
       if (error instanceof Error) message = error.message;
