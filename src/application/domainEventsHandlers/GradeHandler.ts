@@ -1,17 +1,28 @@
-import { IGradeAPIReciverService } from "../../domain/interfaces/IAPIReciverServices/IGradeAPIReciverService";
 import { IGradeHandler } from "../../domain/interfaces/IDomainEventHandlers/IGradeHandler";
-import { Grade } from "../../domain/models/Grade";
+import Assignment from "../../domain/models/Assignment";
+import { Grade, Rubric_GradedCriteria } from "../../domain/models/Grade";
+import Submission from "../../domain/models/Submission";
+import AssignmentAPIReciverService from "../../infrastructure/recivers/AssignmentAPIReciverService";
+import SubmissionAPIReciverService from "../../infrastructure/recivers/SubmissionAPIReciverService";
+import { AssignmentHandler } from "./AssignmentHandler";
+import { SubbmisionHandler } from "./SubbmisionHandler";
 
 export class GradeHandler implements IGradeHandler {
-    gradeAPIReciverService: IGradeAPIReciverService;
 
-    constructor(gradeAPIReciverService: IGradeAPIReciverService) {
-        this.gradeAPIReciverService = gradeAPIReciverService;
-    }
-    async GetStudnetSubmissions(idCourse: number, idAssignment: number, studentCanvasId: number): Promise<Grade> {
+    async GetGradedCriteriaAsGrade(assignment: Assignment, submission: Submission): Promise<Grade> {
+        let rubric_gradedCriterias: Rubric_GradedCriteria[] = [];
         try {
-            const gradeDTO = await this.gradeAPIReciverService.GetStudnetGrade(idCourse, idAssignment, studentCanvasId);
-            return new Grade(gradeDTO);
+            for (let rubric of assignment.rubric) {
+                if (submission.full_rubric_assessment != null) {
+                    for (let criteria of submission.full_rubric_assessment.criterias) {
+                        if (rubric.id == criteria.criterion_id) {
+                            rubric_gradedCriterias.push(new Rubric_GradedCriteria(criteria, rubric))
+                        }
+                    }
+                }
+            }
+            return new Grade(rubric_gradedCriterias, assignment.id, submission.id)
+
         } catch (error) {
             let message;
             if (error instanceof Error) message = error.message;
@@ -22,4 +33,30 @@ export class GradeHandler implements IGradeHandler {
             return Promise.reject(error);
         }
     }
+
+    async GetGradedCriteriaAsSubmission(assignment: Assignment, submission: Submission): Promise<Submission> {
+
+        try {
+            for (let rubric of assignment.rubric) {
+                if (submission.full_rubric_assessment != null) {
+                    for (let criteria of submission.full_rubric_assessment.criterias) {
+                        if (rubric.id == criteria.criterion_id) {
+                            criteria.setMaxPoints(rubric.points);
+                        }
+                    }
+                }
+            }
+            return submission;
+
+        } catch (error) {
+            let message;
+            if (error instanceof Error) message = error.message;
+            else message = String(error);
+            // we'll proceed, but let's report it
+            console.error(message);
+            console.log(error);
+            return Promise.reject(error);
+        }
+    }
+
 }

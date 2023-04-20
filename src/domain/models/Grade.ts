@@ -1,29 +1,26 @@
-import GradeDTO from "../../infrastructure/dto/GradeDTO";
+import { Rubric } from "./Assignment";
+import { GradedCriteria } from "./Submission"
 
 export class Grade {
+    assignmentId: number;
+    submissionId: number;
+    rubric_gradedCriteria: Rubric_GradedCriteria[];
 
-    //public current_grade: string;
-    //public current_score: number;
-    //public final_grade: string;
-    //public final_score: number;
-    //public unposted_current_score: number;
-    //public unposted_current_grade: string;
-    //public unposted_final_score: number;
-    //public unposted_final_grade: string;
-
-
-    constructor(
-        gradeDTO: GradeDTO
-    ) {
-        //this.current_grade = current_grade;
-        //this.current_score = current_score,
-        //    this.final_grade = final_grade,
-        //    this.final_score = final_score,
-        //    this.unposted_current_score = unposted_current_score,
-        //    this.unposted_current_grade = unposted_current_grade,
-        //    this.unposted_final_score = unposted_final_score,
-        //    this.unposted_final_grade = unposted_final_grade
-
+    constructor(rubric_gradedCriteria: Rubric_GradedCriteria[], assignmentId: number, submissionId: number) {
+        this.rubric_gradedCriteria = rubric_gradedCriteria;
+        this.submissionId = submissionId;
+        this.assignmentId = assignmentId;
     }
 
+
+}
+export class Rubric_GradedCriteria {
+    gradedCriteria: GradedCriteria;
+    rubric: Rubric;
+
+    constructor(gradedCriteria: GradedCriteria, rubric: Rubric) {
+        this.gradedCriteria = gradedCriteria;
+        this.rubric = rubric;
+
+    }
 }

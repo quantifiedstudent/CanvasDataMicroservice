@@ -140,7 +140,7 @@ export class FullRubricAssessment {
   assessment_type: string;
   assessor_id: number;
   artifact_attempt: number;
-  criterias: Criteria[];
+  criterias: GradedCriteria[];
   rubric_association: RubricAssociation;
   assessor_name: string;
   assessor_avatar_url: string;
@@ -156,7 +156,7 @@ export class FullRubricAssessment {
     this.assessor_id = fullRubricAssessmentDTO.assessor_id;
     this.artifact_attempt = fullRubricAssessmentDTO.artifact_attempt;
     this.criterias = fullRubricAssessmentDTO.data.map(
-      (criteria: GradedCriteriaDTO) => new Criteria(criteria)
+      (criteria: GradedCriteriaDTO) => new GradedCriteria(criteria)
     );
     this.rubric_association = new RubricAssociation(
       fullRubricAssessmentDTO.rubric_association
@@ -166,7 +166,9 @@ export class FullRubricAssessment {
   }
 }
 
-export class Criteria {
+//Change for GradedCriteria
+//
+export class GradedCriteria {
   id: string;
   criterion_id: string;
   learning_outcome_id: number | null;

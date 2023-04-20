@@ -2,9 +2,10 @@ import ManualFetch from "./manualFetching";
 import routerCommandStudentHandler from "./application/commandHandlers/CommandStudentHandler";
 import express from "express";
 import routerCommandSubbmisionHandler from './application/commandHandlers/CommandSubbmisionHandler'
-import routerCommandOutcomeHandler from './application/commandHandlers/CommandOutcomeHandler';
 import routerCommandCourseHandler from './application/commandHandlers/CommandCourseHandler';
 import routerCommandAssignmentHandler from './application/commandHandlers/CommandAssignmentHandler';
+import routerCommandGradeHandler from './application/commandHandlers/CommandGradeHandler';
+
 import GetPrivateToken from './GettingToken';
 
 console.log("Hello world");
@@ -34,6 +35,6 @@ app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
 app.use('/subbmision', routerCommandSubbmisionHandler);
 app.use('/student', routerCommandStudentHandler);
-app.use('/outcome', routerCommandOutcomeHandler);
 app.use('/course', routerCommandCourseHandler);
 app.use('/assignment', routerCommandAssignmentHandler);
+app.use('/grade', routerCommandGradeHandler);
