@@ -10,7 +10,7 @@ const subbmisionHandler = new SubbmisionHandler(submissionAPIReciverService);
 
 
 
-router.get('/course/:courseId/student/:studentId/assigment/:assignmentsId', async function (req, res) {
+router.get('/course/:courseId/student/:studentId/assignment/:assignmentsId', async function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     try {
         res.json(await subbmisionHandler.GetStudnetSubmissions(req.params.courseId, req.params.assignmentsId, req.params.studentId));
