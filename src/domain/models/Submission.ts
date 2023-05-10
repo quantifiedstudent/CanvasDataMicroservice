@@ -6,6 +6,7 @@ import SubmissionDTO, {
 } from "../../infrastructure/dto/SubmissionDTO";
 export default class Submission {
   id: number;
+  courseId: number;
   body: null;
   url: null;
   grade: null;
@@ -38,6 +39,11 @@ export default class Submission {
 
   constructor(dto: SubmissionDTO) {
     this.id = dto.id;
+    if(dto.courseId == null){
+      this.courseId = -1;
+    }else{
+      this.courseId = dto.courseId;
+    }
     this.body = dto.body;
     this.url = dto.url;
     this.grade = dto.grade;

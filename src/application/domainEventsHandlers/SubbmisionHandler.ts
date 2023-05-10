@@ -11,6 +11,7 @@ export class SubbmisionHandler implements ISubbmisionHandler {
     async GetStudnetSubmissions(idCourse: string, idAssignment: string, studentCanvasId: string): Promise<Submission> {
         try {
             const submissionDTO = await this.submissionAPIReciverService.GetStudnetSubmissions(+idCourse, +idAssignment, +studentCanvasId);
+            submissionDTO.courseId = +idCourse;
             return new Submission(submissionDTO);
         } catch (error) {
             let message;
