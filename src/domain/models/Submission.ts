@@ -176,7 +176,7 @@ export class GradedCriteria {
   comments_enabled: boolean;
   comments: string;
   comments_html?: string;
-  points?: number;
+  studentsPoints?: number;
   maxPoints?: number;
   above_threshold?: boolean;
 
@@ -188,7 +188,7 @@ export class GradedCriteria {
     this.comments_enabled = data.comments_enabled;
     this.comments = data.comments;
     this.comments_html = data.comments_html;
-    this.points = data.points;
+    this.studentsPoints = data.points;
     this.above_threshold = data.above_threshold;
   }
 

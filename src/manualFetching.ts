@@ -52,9 +52,7 @@ export default class ManualFetch extends BaseCanvasAPIReciverService {
       if (submission.full_rubric_assessment != null) {
         for (let criteria of submission.full_rubric_assessment.criterias) {
           if (rubric.id == criteria.criterion_id) {
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-            console.log(criteria.points, "points out of", rubric.points)
-            console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  
           }
         }
       }

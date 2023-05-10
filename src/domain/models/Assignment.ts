@@ -98,7 +98,7 @@ export default class Assignment {
 
 export class Rubric {
   id: string;
-  points: number;
+  maxPoints: number;
   description: string;
   long_description: string;
   ignore_for_scoring: boolean;
@@ -109,7 +109,7 @@ export class Rubric {
 
   constructor(rubricDTO: RubricDTO) {
     this.id = rubricDTO.id;
-    this.points = rubricDTO.points;
+    this.maxPoints = rubricDTO.points;
     this.description = rubricDTO.description;
     this.long_description = rubricDTO.long_description;
     this.ignore_for_scoring = rubricDTO.ignore_for_scoring;

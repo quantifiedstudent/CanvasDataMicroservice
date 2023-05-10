@@ -41,7 +41,7 @@ export class GradeHandler implements IGradeHandler {
                 if (submission.full_rubric_assessment != null) {
                     for (let criteria of submission.full_rubric_assessment.criterias) {
                         if (rubric.id == criteria.criterion_id) {
-                            criteria.setMaxPoints(rubric.points);
+                            criteria.setMaxPoints(rubric.maxPoints);
                         }
                     }
                 }

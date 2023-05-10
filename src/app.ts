@@ -26,9 +26,7 @@ app.get("/", (req, res) => {
 
 // console.log(assignments);
 
-const manual: ManualFetch = new ManualFetch(token);
 
-await manual.combineAssignmentSubbmition();
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
