@@ -4,6 +4,7 @@ import SubmissionDTO, {
   GradedCriteriaDTO,
   RubricAssociationDTO,
 } from "../../infrastructure/dto/SubmissionDTO";
+import Assignment from "./Assignment";
 export default class Submission {
   id: number;
   courseId: number;
@@ -36,6 +37,7 @@ export default class Submission {
   preview_url: string;
   attachments: Attachment[];
   full_rubric_assessment?: FullRubricAssessment;
+  assignment?: Assignment;
 
   constructor(dto: SubmissionDTO) {
     this.id = dto.id;
@@ -83,6 +85,9 @@ export default class Submission {
     this.full_rubric_assessment = dto.full_rubric_assessment
       ? new FullRubricAssessment(dto.full_rubric_assessment)
       : undefined;
+    if (dto.assignment != undefined) {
+      this.assignment = new Assignment(dto.assignment)
+    }
   }
 }
 

@@ -1,3 +1,5 @@
+import AssignmentDTO from "./AssignmentDTO";
+
 export default interface SubmissionDTO {
   id: number;
   courseId?: number;
@@ -30,6 +32,7 @@ export default interface SubmissionDTO {
   preview_url: string;
   attachments: AttachmentDTO[];
   full_rubric_assessment?: FullRubricAssessmentDTO;
+  assignment?: AssignmentDTO;
 }
 
 export interface AttachmentDTO {

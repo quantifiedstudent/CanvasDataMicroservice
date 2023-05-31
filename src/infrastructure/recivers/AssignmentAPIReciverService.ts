@@ -6,7 +6,8 @@ import IAssignmentAPIReciver from "../../domain/interfaces/IAPIReciverServices/I
 export default class AssignmentAPIReciverService extends BaseCanvasAPIReciverService implements IAssignmentAPIReciver {
   // https://canvas.instructure.com/doc/api/file.pagination.html
   // Added ?per_page=60 to get all of the assignments, this should be fixed in the final version with pagination
-  apiRouteAll = (studentCanvasId: number, courseId: number) => `/api/v1/users/${studentCanvasId.toString()}/courses/${courseId.toString()}/assignments?per_page=30`;
+  // apiRouteAll = (studentCanvasId: number, courseId: number) => `/api/v1/users/${studentCanvasId.toString()}/courses/${courseId.toString()}/assignments?per_page=30`;
+  apiRouteAll = (studentCanvasId: number, courseId: number) => `/api/v1/users/${studentCanvasId.toString()}/courses/${courseId.toString()}/assignments`;
   apiRouteById = (courseId: number, assignmentId: number) => `/api/v1/courses/${courseId.toString()}/assignments/${assignmentId.toString()}`;
 
   constructor(token: string) {
