@@ -1,11 +1,9 @@
-import ManualFetch from "./manualFetching";
 import routerCommandStudentHandler from "./application/commandHandlers/CommandStudentHandler";
 import express from "express";
 import routerCommandSubbmisionHandler from './application/commandHandlers/CommandSubbmisionHandler'
 import routerCommandCourseHandler from './application/commandHandlers/CommandCourseHandler';
 import routerCommandAssignmentHandler from './application/commandHandlers/CommandAssignmentHandler';
 import routerCommandGradeHandler from './application/commandHandlers/CommandGradeHandler';
-
 import GetPrivateToken from './GettingToken';
 
 console.log("Hello world");
@@ -22,11 +20,6 @@ const token = GetPrivateToken();
 app.get("/", (req, res) => {
   res.status(200).send("welcome to the CamvasDataMicroservice api");
 });
-
-
-// console.log(assignments);
-
-
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 

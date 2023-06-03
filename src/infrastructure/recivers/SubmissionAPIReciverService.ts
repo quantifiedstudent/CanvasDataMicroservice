@@ -3,12 +3,6 @@ import BaseCanvasAPIReciverService from "./BaseCanvasReciverService";
 import SubmissionDTO from "../dto/SubmissionDTO";
 import ISubmissionAPIReciverService from "../../domain/interfaces/IAPIReciverServices/ISubmissionAPIReciverService";
 export default class SubmissionAPIReciverService extends BaseCanvasAPIReciverService implements ISubmissionAPIReciverService {
-
-    //We dont have premission for seeing submissions
-
-    // we have michael, if we use user_id
-    // GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
-
     apiRoute = (CourseId: number, assignmentId: number, studentCanvasId: number) => `/api/v1/courses/${CourseId.toString()}/assignments/${assignmentId.toString()}/submissions/${studentCanvasId.toString()}?include=full_rubric_assessment`;
     apiRouteCombined = (CourseId: number) => `/api/v1/courses/${CourseId.toString()}/students/submissions?include[]=assignment&include[]=full_rubric_assessment`;
 
