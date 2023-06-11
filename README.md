@@ -34,6 +34,10 @@
 
 `http://localhost:{port}/student/1234` - returns StudentObject with given ID
 
+| Parameter | Type | Description |
+| ------------ | ------------ | ------------ |
+| *studentId*  | int | Student Canvas Id (user_id) |
+
 <br>
 
 ## Canvas Courses
