@@ -10,33 +10,6 @@ export default class StudentAPIReciverService extends BaseCanvasAPIReciverServic
     super(token);
   }
 
-  async GetStudnet(studentUserId: number): Promise<StudentDTO> {
-    const header = {
-      headers: {
-        Authorization: `Bearer ${this.token}`,
-      },
-    };
-
-    const options = {
-      method: "GET",
-      ...header,
-    };
-
-    try {
-      const parameter = studentUserId;
-      const response = await fetch(this.url + this.apiRoute + parameter, options);
-      const data = await response.json();
-      return <StudentDTO>data;
-    } catch (error) {
-      let message;
-      if (error instanceof Error) message = error.message;
-      else message = String(error);
-      // we'll proceed, but let's report it
-      console.error(message);
-      return Promise.reject(error);
-    }
-  }
-
   async GetStudentCanvasIdFromToken(): Promise<number> {
     const header = {
       headers: {
@@ -54,6 +27,60 @@ export default class StudentAPIReciverService extends BaseCanvasAPIReciverServic
       const response = await fetch(this.url + this.apiRoute + parameter, options);
       const data = await response.json();
       return (<StudentDTO>data).id;
+    } catch (error) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+      // we'll proceed, but let's report it
+      console.error(message);
+      return Promise.reject(error);
+    }
+  }
+
+  async GetStudentFromToken(): Promise<StudentDTO> {
+    const header = {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    };
+
+    const options = {
+      method: "GET",
+      ...header,
+    };
+
+    try {
+      const parameter = "self?=";
+      const response = await fetch(this.url + this.apiRoute + parameter, options);
+      const data = await response.json();
+      return (<StudentDTO>data);
+    } catch (error) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+      // we'll proceed, but let's report it
+      console.error(message);
+      return Promise.reject(error);
+    }
+  }
+
+  async GetStudnet(studentUserId: number): Promise<StudentDTO> {
+    const header = {
+      headers: {
+        Authorization: `Bearer ${this.token}`,
+      },
+    };
+
+    const options = {
+      method: "GET",
+      ...header,
+    };
+
+    try {
+      const parameter = studentUserId;
+      const response = await fetch(this.url + this.apiRoute + parameter, options);
+      const data = await response.json();
+      return <StudentDTO>data;
     } catch (error) {
       let message;
       if (error instanceof Error) message = error.message;
