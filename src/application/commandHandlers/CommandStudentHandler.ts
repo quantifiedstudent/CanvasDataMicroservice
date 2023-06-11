@@ -10,7 +10,7 @@ const studentHandler = new StudentHandler(studentAPIReciverService);
 
 const router = express.Router()
 
-router.get('/self', async function (req, res) {
+router.get('/selfId', async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   try {
     res.json(await studentHandler.GetStudentCanvasIdFromToken());
@@ -20,7 +20,15 @@ router.get('/self', async function (req, res) {
   }
 });
 
-
+router.get('/self', async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  try {
+    res.json(await studentHandler.GetStudentFromToken());
+  } catch (err) {
+    res.status(500);
+    res.json(err);
+  }
+});
 
 router.get('/:studentUserCanvasId', async function (req, res) {
   res.setHeader('Content-Type', 'application/json');

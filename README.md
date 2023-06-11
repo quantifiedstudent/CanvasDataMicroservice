@@ -4,12 +4,24 @@
 ### Student Canvas Id (user_id)
 >Gets Canvas Id (user_id) of student which authorization token is used
 
+`http://localhost:{port}/student/selfId` - API Route
+
+
+>Example
+
+`http://localhost:{port}/student/selfId` - returns student's Canvas Id (user_id)
+
+<br>
+
+### Student Data by Token
+>Gets information about student which authorization token is used
+
 `http://localhost:{port}/student/self` - API Route
 
 
 >Example
 
-`http://localhost:{port}/student/self` - returns student's Canvas Id (user_id)
+`http://localhost:{port}/student/self` - returns StudentObject
 
 <br>
 
@@ -21,6 +33,10 @@
 >Example
 
 `http://localhost:{port}/student/1234` - returns StudentObject with given ID
+
+| Parameter | Type | Description |
+| ------------ | ------------ | ------------ |
+| *studentId*  | int | Student Canvas Id (user_id) |
 
 <br>
 
