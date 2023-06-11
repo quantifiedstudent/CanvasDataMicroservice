@@ -15,6 +15,12 @@ const PORT: number = 7000;
 // Middleware that parses body to JSON format
 app.use(express.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+  });
+
 const token = GetPrivateToken();
 
 app.get("/", (req, res) => {
