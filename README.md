@@ -1,4 +1,8 @@
 # CanvasDataMicroservice
+## Setup Local Development Environment
+1. Add Canvas Access Token to the file PrivateToken.txt (https://canvas.instructure.com/doc/api/file.oauth.html#manual-token-generation)
+2. Install all dependencies using `npm i`
+3. Run the project with `npm run start:dev`
 
 ## Student
 ### Student Canvas Id (user_id)
