@@ -135,4 +135,3 @@ dist
 *.js.map
 
 #PrivateToken.txt 
-src/PrivateToken.txt
